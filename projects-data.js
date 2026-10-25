@@ -18,6 +18,21 @@ window.PROJECTS = [
     "tg": ""
   },
   {
+    "id": "cyberunion-club",
+    "title": "cyberunion-club",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный сайт компьютерного клуба «Кибер Юнион» (ТЦ «Титан», Минск): залы и цены, библиотека игр, контакты.",
+    "tags": [
+      "HTML"
+    ],
+    "repo": "https://github.com/T3trix-hub/cyberunion-club",
+    "live": "https://t3trix-hub.github.io/cyberunion-club/",
+    "tg": ""
+  },
+  {
     "id": "bel",
     "title": "Bel-Interact",
     "emoji": "🗺️",
