@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Админка — Lexey</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .wrap { max-width: 860px; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+    .panel { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-top: 1.5rem; }
+    .panel h3 { margin-bottom: 1rem; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem; }
+    .full { grid-column: 1 / -1; }
+    label { display: block; font-size: 0.75rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 0.3rem; }
+    input[type=text], input[type=url], select, textarea {
+      width: 100%; padding: 0.6rem 0.8rem; background: var(--bg3); color: var(--text);
+      border: 1px solid var(--border); border-radius: 8px; font: inherit; font-size: 0.875rem;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 84px; }
+    .row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
+    .b { padding: 0.55rem 1.1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg3);
+         color: var(--text); font: inherit; font-size: 0.8125rem; font-weight: 500; cursor: pointer; }
+    .b:hover { border-color: var(--accent); }
+    .b.pri { background: var(--fill); border-color: var(--fill); color: var(--onfill); }
+    .b.sm { padding: 0.25rem 0.55rem; font-size: 0.75rem; }
+    #status { font-size: 0.8125rem; font-family: var(--font-mono); color: var(--muted); }
+    #status.ok { color: #4ade80; } #status.err { color: #f87171; }
+    .item { display: flex; gap: 0.75rem; align-items: center; padding: 0.7rem 0; border-top: 1px solid var(--border); }
+    .item:first-child { border-top: 0; }
+    .item .t { flex: 1; min-width: 0; }
+    .item .t b { display: block; }
+    .item .t span { font-size: 0.75rem; color: var(--muted); font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+    .stats { display: flex; gap: 1.5rem; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--muted); }
+    .stats b { color: var(--accent); font-size: 1.1rem; }
+    #out { font-family: var(--font-mono); font-size: 0.75rem; min-height: 180px; }
+    .hint { font-size: 0.8125rem; color: var(--muted); line-height: 1.7; margin-top: 0.75rem; }
+    .dirty { display: none; color: #fbbf24; font-size: 0.8125rem; margin-top: 0.75rem; }
+    @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Только для меня</span>
+  <h1>Админка портфолио</h1>
+  <p class="hint">Кидаешь ссылку на репозиторий и на сайт — страница подтягивает данные с GitHub, ты правишь текст и жмёшь «Добавить». Потом скачиваешь <code>projects-data.js</code> и заменяешь им файл в репозитории. Карточки, список проектов, ссылки на GitHub и счётчики на всех страницах обновятся сами.</p>
+
+  <div class="panel">
+    <h3 id="formTitle">Новый проект</h3>
+    <div class="grid2">
+      <div class="full"><label for="repo">Ссылка на репозиторий (GitHub)</label>
+        <input type="url" id="repo" placeholder="https://github.com/T3trix-hub/my-project" /></div>
+      <div class="full"><label for="live">Ссылка на сайт (live)</label>
+        <input type="url" id="live" placeholder="https://t3trix-hub.github.io/my-project/" /></div>
+      <div><label for="title">Название</label><input type="text" id="title" /></div>
+      <div><label for="emoji">Эмодзи</label><input type="text" id="emoji" value="🚀" maxlength="4" /></div>
+      <div class="full"><label for="desc">Описание</label><textarea id="desc"></textarea></div>
+      <div><label for="tags">Теги через запятую</label><input type="text" id="tags" placeholder="Python, FastAPI" /></div>
+      <div><label for="type">Тип</label>
+        <select id="type"><option value="web">Веб-сайт</option><option value="app">Приложение</option><option value="bot">Telegram-бот</option></select></div>
+      <div><label for="tg">Telegram-бот (необязательно)</label><input type="url" id="tg" placeholder="https://t.me/my_bot" /></div>
+      <div><label for="featured">Показывать на главной</label>
+        <select id="featured"><option value="1">Да</option><option value="0">Нет</option></select></div>
+    </div>
+    <div class="row">
+      <button class="b" id="btnFetch" type="button">Подтянуть с GitHub</button>
+      <button class="b pri" id="btnSave" type="button">Добавить</button>
+      <button class="b" id="btnCancel" type="button" style="display:none">Отмена</button>
+      <span id="status"></span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="row" style="margin:0 0 1rem;justify-content:space-between">
+      <h3 style="margin:0">Проекты</h3>
+      <div class="stats"><span><b id="sP">0</b> проектов</span><span><b id="sL">0</b> live-демо</span><span><b id="sF">0</b> на главной</span></div>
+    </div>
+    <div id="items"></div>
+  </div>
+
+  <div class="panel">
+    <h3>projects-data.js</h3>
+    <textarea id="out" readonly></textarea>
+    <div class="row">
+      <button class="b pri" id="btnDl" type="button">Скачать файл</button>
+      <button class="b" id="btnCopy" type="button">Копировать</button>
+    </div>
+    <div class="dirty" id="dirty">Есть изменения: скачай файл и замени им <code>projects-data.js</code> в репозитории, иначе посетители их не увидят.</div>
+  </div>
+</div>
+
+<script src="projects-data.js"></script>
+<script src="portfolio.js"></script>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const list = JSON.parse(JSON.stringify(window.PROJECTS || []));
+  let editing = null, changed = false;
+
+  const status = (t, c) => { $('status').textContent = t || ''; $('status').className = c || ''; };
+  const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'project-' + Date.now();
+  const parseRepo = u => { const m = String(u).trim().match(/github\.com\/([^\/\s]+)\/([^\/\s#?]+)/i); return m ? { owner: m[1], name: m[2].replace(/\.git$/, '') } : null; };
+  const isUrl = u => /^https?:\/\//i.test(u);
+
+  async function fetchRepo() {
+    const r = parseRepo($('repo').value);
+    if (!r) return status('Это не похоже на ссылку на GitHub-репозиторий', 'err');
+    status('Загружаю…');
+    try {
+      const res = await fetch('https://api.github.com/repos/' + r.owner + '/' + r.name);
+      if (!res.ok) throw new Error(res.status === 404 ? 'Репозиторий не найден (или он приватный)' : res.status === 403 ? 'Лимит запросов GitHub, попробуй позже или заполни руками' : 'GitHub API: ' + res.status);
+      const d = await res.json();
+      if (!$('title').value) $('title').value = d.name;
+      if (!$('desc').value) $('desc').value = d.description || '';
+      if (!$('tags').value) $('tags').value = [d.language].concat((d.topics || []).slice(0, 3)).filter(Boolean).join(', ');
+      if (!$('live').value) $('live').value = d.homepage || ('https://' + r.owner.toLowerCase() + '.github.io/' + r.name + '/');
+      status('Данные подтянуты — проверь и поправь', 'ok');
+    } catch (e) { status(e.message || 'Не удалось связаться с GitHub', 'err'); }
+  }
+
+  function resetForm() {
+    editing = null;
+    ['repo', 'live', 'title', 'desc', 'tags', 'tg'].forEach(k => $(k).value = '');
+    $('emoji').value = '🚀'; $('type').value = 'web'; $('featured').value = '1';
+    $('formTitle').textContent = 'Новый проект'; $('btnSave').textContent = 'Добавить'; $('btnCancel').style.display = 'none';
+  }
+
+  function save() {
+    const repo = $('repo').value.trim(), live = $('live').value.trim(), tg = $('tg').value.trim();
+    const title = $('title').value.trim();
+    if (!title) return status('Укажи название', 'err');
+    if (repo && !isUrl(repo) || live && !isUrl(live) || tg && !isUrl(tg)) return status('Ссылки должны начинаться с http:// или https://', 'err');
+    if (!repo && !live) return status('Нужна хотя бы одна ссылка: на репозиторий или на сайт', 'err');
+    const p = {
+      id: editing || slug((parseRepo(repo) || {}).name || title),
+      title, emoji: $('emoji').value.trim() || '🚀', type: $('type').value,
+      featured: $('featured').value === '1',
+      short: '', desc: $('desc').value.trim(),
+      tags: $('tags').value.split(',').map(s => s.trim()).filter(Boolean),
+      repo, live, tg
+    };
+    const i = list.findIndex(x => x.id === p.id);
+    if (i >= 0) { p.short = list[i].short && list[i].desc === p.desc ? list[i].short : ''; list[i] = p; } else list.push(p);
+    changed = true; resetForm(); status('Сохранено в списке ниже', 'ok'); render();
+  }
+
+  function edit(id) {
+    const p = list.find(x => x.id === id); if (!p) return;
+    editing = id;
+    $('repo').value = p.repo || ''; $('live').value = p.live || ''; $('title').value = p.title; $('emoji').value = p.emoji;
+    $('desc').value = p.desc || ''; $('tags').value = (p.tags || []).join(', '); $('type').value = p.type; $('tg').value = p.tg || '';
+    $('featured').value = p.featured ? '1' : '0';
+    $('formTitle').textContent = 'Редактирование: ' + p.title; $('btnSave').textContent = 'Сохранить'; $('btnCancel').style.display = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function render() {
+    const box = $('items'); box.textContent = '';
+    if (!list.length) { box.textContent = 'Пока пусто.'; }
+    list.forEach((p, i) => {
+      const d = document.createElement('div'); d.className = 'item';
+      const t = document.createElement('div'); t.className = 't';
+      const b = document.createElement('b'); b.textContent = p.emoji + ' ' + p.title + (p.featured ? '  ★' : '');
+      const s = document.createElement('span'); s.textContent = [p.live, p.repo].filter(Boolean).join('  ·  ') + '  ·  скриншот: images/projects/' + p.id + '.jpg';
+      t.append(b, s); d.append(t);
+      [['↑', () => move(i, -1)], ['↓', () => move(i, 1)], ['Изменить', () => edit(p.id)], ['Удалить', () => del(i)]].forEach(([l, fn]) => {
+        const x = document.createElement('button'); x.type = 'button'; x.className = 'b sm'; x.textContent = l; x.onclick = fn; d.append(x);
+      });
+      box.append(d);
+    });
+    $('sP').textContent = list.length;
+    $('sL').textContent = list.filter(p => p.live).length;
+    $('sF').textContent = list.filter(p => p.featured).length;
+    $('out').value = '// Список проектов портфолио. Файл генерируется страницей admin.html — руками можно не править.\nwindow.PROJECTS = ' + JSON.stringify(list, null, 2) + ';\n';
+    $('dirty').style.display = changed ? 'block' : 'none';
+  }
+  function move(i, d) { const j = i + d; if (j < 0 || j >= list.length) return; [list[i], list[j]] = [list[j], list[i]]; changed = true; render(); }
+  function del(i) { if (confirm('Удалить «' + list[i].title + '»?')) { list.splice(i, 1); changed = true; render(); } }
+
+  $('btnFetch').onclick = fetchRepo;
+  $('repo').addEventListener('change', () => { if (!editing && parseRepo($('repo').value) && !$('title').value) fetchRepo(); });
+  $('btnSave').onclick = save;
+  $('btnCancel').onclick = () => { resetForm(); status(''); };
+  $('btnDl').onclick = () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([$('out').value], { type: 'text/javascript' }));
+    a.download = 'projects-data.js'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+  $('btnCopy').onclick = async () => {
+    try { await navigator.clipboard.writeText($('out').value); status('Скопировано', 'ok'); }
+    catch (e) { $('out').select(); document.execCommand('copy'); status('Скопировано', 'ok'); }
+  };
+  window.addEventListener('beforeunload', e => { if (changed) { e.preventDefault(); e.returnValue = ''; } });
+  render();
+})();
+</script>
+</body>
+</html>
