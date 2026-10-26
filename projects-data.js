@@ -35,6 +35,23 @@ window.PROJECTS = [
     "tg": ""
   },
   {
+    "id": "xnova",
+    "title": "xnova",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный сайт компьютерного клуба Xnova (Минск, ул. Сергея Есенина, 6): тарифы по залам, галерея, контакты. Яркий оранжево-чёрный дизайн в стиле постера, FAQ в виде чата, адаптив, анимации. Чистые HTML, CSS и JS без сборки.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "repo": "https://github.com/T3trix-hub/xnova",
+    "live": "https://t3trix-hub.github.io/xnova/",
+    "tg": ""
+  },
+  {
     "id": "bel",
     "title": "Bel-Interact",
     "emoji": "🗺️",
