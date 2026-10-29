@@ -52,6 +52,23 @@ window.PROJECTS = [
     "tg": ""
   },
   {
+    "id": "mydearkebab",
+    "title": "mydearkebab",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный сайт кафе My Dear Kebab (Минск, Комсомольская ул., 3): меню с поиском и фото, атмосфера, контакты. Дизайн в духе самого заведения: тёмная плитка, тёплый янтарный свет, деревянная решётка с геометрическим узором. Выбор трёх случайных блюд на главной. Чистые HTML, CSS и JS без сборки.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "repo": "https://github.com/T3trix-hub/mydearkebab",
+    "live": "https://t3trix-hub.github.io/mydearkebab/",
+    "tg": ""
+  },
+  {
     "id": "bel",
     "title": "Bel-Interact",
     "emoji": "🗺️",
