@@ -52,6 +52,23 @@ window.PROJECTS = [
     "tg": ""
   },
   {
+    "id": "8-22",
+    "title": "8.22",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный сайт студии красоты 8.22 (Минск, просп. Дзержинского, 34): главная, услуги и цены с фильтром, о студии, запись и контакты. Мягкий светлый дизайн в тонах шёлка, шрифты Cormorant Garamond и Montserrat. Чистые HTML, CSS и JS без сборки. Без раздела галереи, фото распределены по страницам.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "repo": "https://github.com/T3trix-hub/8.22",
+    "live": "https://t3trix-hub.github.io/8.22/",
+    "tg": ""
+  },
+  {
     "id": "mydearkebab",
     "title": "mydearkebab",
     "emoji": "🚀",
