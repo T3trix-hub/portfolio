@@ -69,6 +69,21 @@ window.PROJECTS = [
     "tg": ""
   },
   {
+    "id": "o-k",
+    "title": "o.k",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный сайт студии в Минске (просп. Дзержинского, 21): главная, занятия, о студии, запись и как найти. Тёплые коричневые и песочные тона, органичные формы, шрифты Prata и Raleway. Чистые HTML, CSS и JS без сборки.",
+    "tags": [
+      "HTML"
+    ],
+    "repo": "https://github.com/T3trix-hub/o.k",
+    "live": "https://t3trix-hub.github.io/o.k/",
+    "tg": ""
+  },
+  {
     "id": "mydearkebab",
     "title": "mydearkebab",
     "emoji": "🚀",
