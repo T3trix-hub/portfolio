@@ -101,6 +101,23 @@ window.PROJECTS = [
     "tg": ""
   },
   {
+    "id": "bradford",
+    "title": "bradford",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный статический сайт для студии красоты «Брэдфорд» (Минск, ул. Гурского, 45). Чистый HTML, CSS и JavaScript: без сборки, фреймворков и зависимостей.",
+    "tags": [
+      "HTML",
+      "JS",
+      "CSS"
+    ],
+    "repo": "https://github.com/T3trix-hub/bradford",
+    "live": "https://t3trix-hub.github.io/bradford/",
+    "tg": ""
+  },
+  {
     "id": "bel",
     "title": "Bel-Interact",
     "emoji": "🗺️",
