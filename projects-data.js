@@ -35,86 +35,80 @@ window.PROJECTS = [
     "tg": ""
   },
   {
-    "id": "xnova",
-    "title": "xnova",
+    "id": "teddy",
+    "title": "teddy",
     "emoji": "🚀",
     "type": "web",
     "featured": false,
     "short": "",
-    "desc": "Многостраничный сайт компьютерного клуба Xnova (Минск, ул. Сергея Есенина, 6): тарифы по залам, галерея, контакты. Яркий оранжево-чёрный дизайн в стиле постера, FAQ в виде чата, адаптив, анимации. Чистые HTML, CSS и JS без сборки.",
-    "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
-    "repo": "https://github.com/T3trix-hub/xnova",
-    "live": "https://t3trix-hub.github.io/xnova/",
-    "tg": ""
-  },
-  {
-    "id": "8-22",
-    "title": "8.22",
-    "emoji": "🚀",
-    "type": "web",
-    "featured": false,
-    "short": "",
-    "desc": "Многостраничный сайт студии красоты 8.22 (Минск, просп. Дзержинского, 34): главная, услуги и цены с фильтром, о студии, запись и контакты. Мягкий светлый дизайн в тонах шёлка, шрифты Cormorant Garamond и Montserrat. Чистые HTML, CSS и JS без сборки. Без раздела галереи, фото распределены по страницам.",
-    "tags": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
-    "repo": "https://github.com/T3trix-hub/8.22",
-    "live": "https://t3trix-hub.github.io/8.22/",
-    "tg": ""
-  },
-  {
-    "id": "o-k",
-    "title": "o.k",
-    "emoji": "🚀",
-    "type": "web",
-    "featured": false,
-    "short": "",
-    "desc": "Многостраничный сайт студии в Минске (просп. Дзержинского, 21): главная, занятия, о студии, запись и как найти. Тёплые коричневые и песочные тона, органичные формы, шрифты Prata и Raleway. Чистые HTML, CSS и JS без сборки.",
+    "desc": "Многостраничный статический сайт для кофейни и детского кафе TeddyBearBar (Минск, просп. Дзержинского, 92). Чистые HTML, CSS и JavaScript, без сборки.",
     "tags": [
       "HTML"
     ],
-    "repo": "https://github.com/T3trix-hub/o.k",
-    "live": "https://t3trix-hub.github.io/o.k/",
+    "repo": "https://github.com/T3trix-hub/teddy",
+    "live": "https://t3trix-hub.github.io/teddy/",
     "tg": ""
   },
   {
-    "id": "mydearkebab",
-    "title": "mydearkebab",
+    "id": "utopia",
+    "title": "utopia",
     "emoji": "🚀",
     "type": "web",
     "featured": false,
     "short": "",
-    "desc": "Многостраничный сайт кафе My Dear Kebab (Минск, Комсомольская ул., 3): меню с поиском и фото, атмосфера, контакты. Дизайн в духе самого заведения: тёмная плитка, тёплый янтарный свет, деревянная решётка с геометрическим узором. Выбор трёх случайных блюд на главной. Чистые HTML, CSS и JS без сборки.",
+    "desc": "Многостраничный статический сайт для лаунж-кафе «Утопия» (Минск, просп. Дзержинского, 80). Чистые HTML, CSS и JavaScript, без сборки.",
+    "tags": [
+      "HTML"
+    ],
+    "repo": "https://github.com/T3trix-hub/utopia",
+    "live": "https://t3trix-hub.github.io/utopia/",
+    "tg": ""
+  },
+  {
+    "id": "tati",
+    "title": "tati",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный статический сайт для студии красоты «Тати студио» (Минск, ул. Гурского, 44, корп. 3). Чистые HTML, CSS и JavaScript, без сборки. В сайте много текстов (описания услуг, «как проходит визит», FAQ), чтобы страницы были содержательными.",
+    "tags": [
+      "HTML"
+    ],
+    "repo": "https://github.com/T3trix-hub/tati",
+    "live": "https://t3trix-hub.github.io/tati/",
+    "tg": ""
+  },
+  {
+    "id": "coffe-2",
+    "title": "Coffe-2",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный статический сайт для кофейни №2 (Минск, Прилукская ул., 60). Чистые HTML, CSS и JavaScript, без сборки.",
+    "tags": [
+      "HTML"
+    ],
+    "repo": "https://github.com/T3trix-hub/Coffe-2",
+    "live": "https://t3trix-hub.github.io/Coffe-2/",
+    "tg": ""
+  },
+  {
+    "id": "nail-room-vysotskaya",
+    "title": "Nail-Room-Vysotskaya",
+    "emoji": "🚀",
+    "type": "web",
+    "featured": false,
+    "short": "",
+    "desc": "Многостраничный статический сайт для ногтевой студии Nail Room Vysotskaya (Минск, Прилукская ул., 60). Чистый HTML, CSS и JavaScript: без сборки и зависимостей.",
     "tags": [
       "HTML",
       "CSS",
-      "JavaScript"
+      "JS"
     ],
-    "repo": "https://github.com/T3trix-hub/mydearkebab",
-    "live": "https://t3trix-hub.github.io/mydearkebab/",
-    "tg": ""
-  },
-  {
-    "id": "bradford",
-    "title": "bradford",
-    "emoji": "🚀",
-    "type": "web",
-    "featured": false,
-    "short": "",
-    "desc": "Многостраничный статический сайт для студии красоты «Брэдфорд» (Минск, ул. Гурского, 45). Чистый HTML, CSS и JavaScript: без сборки, фреймворков и зависимостей.",
-    "tags": [
-      "HTML",
-      "JS",
-      "CSS"
-    ],
-    "repo": "https://github.com/T3trix-hub/bradford",
-    "live": "https://t3trix-hub.github.io/bradford/",
+    "repo": "https://github.com/T3trix-hub/Nail-Room-Vysotskaya",
+    "live": "https://t3trix-hub.github.io/Nail-Room-Vysotskaya/",
     "tg": ""
   },
   {
